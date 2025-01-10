@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "seed": "node seed"
+    "seed": "node seed",
+    "dev": "node server.js"
   },
   "keywords": [],
   "author": "",
