@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" href="/style.css" />
+    <link rel="stylesheet" href="/src/style.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Visitor Guestbook</title>
   </head>
@@ -17,9 +17,16 @@
         placeholder="First Name"
         name="First Name"
         id="firstname"
+        required
       />
       <label for="Comment">Comment:</label>
-      <input type="text" placeholder="Comment" name="Comment" id="comment" />
+      <input
+        type="text"
+        placeholder="Comment"
+        name="Comment"
+        id="comment"
+        required
+      />
       <label for="Rating">Rating:</label>
       <select type="int" placeholder="select" name="Rating" id="visitorrating">
         <option value="">Select</option>
@@ -28,25 +35,26 @@
         <option value="Three">Three</option>
         <option value="Four">Four</option>
         <option value="Five">Five</option>
+        required
       </select>
       <button type="submit">Send</button>
     </form>
 
     <table>
       <tr>
-        <td id="left">Visitor Name</td>
-        <td id="center">Visitor Comment</td>
-        <td id="right">Rating</td>
+        <td class="left">Visitor Name</td>
+        <td class="center">Visitor Comment</td>
+        <td class="right">Rating</td>
       </tr>
       <tr>
-        <td id="left">Visitor Name</td>
-        <td id="center">Visitor Comment</td>
-        <td id="right">Rating</td>
+        <td class="left">Visitor Name</td>
+        <td class="center">Visitor Comment</td>
+        <td class="right">Rating</td>
       </tr>
       <tr>
-        <td id="left">Visitor Name</td>
-        <td id="center">Visitor Comment</td>
-        <td id="right">Rating</td>
+        <td class="left">Visitor Name</td>
+        <td class="center">Visitor Comment</td>
+        <td class="right">Rating</td>
       </tr>
     </table>
   </body>

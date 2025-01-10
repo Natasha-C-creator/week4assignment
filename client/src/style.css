@@ -1,0 +1,21 @@
+@media (min-width: 800px) {
+  .body {
+    background: plum;
+  }
+}
+
+body {
+  background-color: lightblue;
+}
+
+.left {
+  text-align: left;
+}
+
+.center {
+  text-align: center;
+}
+
+.right {
+  text-align: right;
+}
