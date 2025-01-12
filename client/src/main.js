@@ -1,32 +1,61 @@
-const form = document.querySelector("commentsForm");
+document.addEventListener("DOMContentLoaded", () => {
+  fetchComments();
+});
 
-commentsForm.addEventListener("submit", (event) => {
+const form = document.querySelector("#commentsForm");
+
+form.addEventListener("submit", (event) => {
   event.preventDefault();
-  const formData = new FormData(commentsForm);
+
+  const formData = {
+    firstname: document.getElementById("firstname").value,
+    comment: document.getElementById("comment").value,
+    rating: document.getElementById("rating").value,
+  };
   console.log(formData);
-  const jsObjectPlease = Object.fromEntries(formData);
-  console.log(jsObjectPlease);
-  fetch("http://localhost:5174/visitorcomments", {
+
+  function fetchComments() {
+    fetch("http://localhost:5174/comments")
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Fetched comments:", data);
+        const tableBody = document.querySelector("#commentsTableBody");
+        tableBody.innerHTML = "";
+        data.forEach((comment) => appendToTable(comment));
+      })
+      .catch((error) => console.log("Error fetching comments:", error));
+  }
+
+  fetch("http://localhost:5174/comments", {
     method: "POST",
     headers: {
       "Content-type": "application/json",
     },
-    body: JSON.stringify({ jsObjectPlease }),
-  });
-  function clearInputField() {
-    document.getElementById("myForm").reset();
-  }
-  
+    body: JSON.stringify(formData),
+  })
+    .then((response) => {
+      console.log("Response Status:", response.status);
+      if (response.ok) {
+        console.log("Data sent");
+        form.reset();
+        fetchComments();
+      }
+    })
+    .catch((error) => {
+      console.error("Error posting comment:", error);
+    });
 });
 
-//! when you finish, you should replace it with your RENDER server url
+function appendToTable(data) {
+  console.log("Appending to table:", data);
+  const tableBody = document.querySelector("#commentsTableBody");
+  const newRow = document.createElement("tr");
 
-// fetch("server url", {
-//   method: "GET",
-//   headers: {
-//     "Content-type": "application/json",
-//   },
-//   body: JSON.stringify({ formValues }),
-// });
+  newRow.innerHTML = `
+      <td class="left">${data.firstname}</td>
+      <td class="center">${data.comment}</td>
+      <td class="right">${data.rating}</td>
+    `;
 
-//The same way as we fetch the POST route, we also need to fetch the GET route, so we can display the data from the database on the DOM
+  tableBody.appendChild(newRow);
+}

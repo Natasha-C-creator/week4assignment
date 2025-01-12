@@ -8,7 +8,7 @@
   </head>
   <body>
     <div id="app"></div>
-    <script type="module" src="/src/main.js"></script>
+    <script type="module" src="http://localhost:5173/src/main.js"></script>
     <h1>Visitor Guestbook</h1>
     <form id="commentsForm">
       <label for="First Name">First Name:</label>
@@ -28,34 +28,26 @@
         required
       />
       <label for="Rating">Rating:</label>
-      <select type="int" placeholder="select" name="Rating" id="visitorrating">
+      <select type="int" placeholder="select" name="Rating" id="rating">
         <option value="">Select</option>
         <option value="One">One</option>
         <option value="Two">Two</option>
         <option value="Three">Three</option>
         <option value="Four">Four</option>
         <option value="Five">Five</option>
-        required
       </select>
       <button type="submit">Submit</button>
     </form>
-
     <table>
-      <tr>
-        <td class="left">Visitor Name</td>
-        <td class="center">Visitor Comment</td>
-        <td class="right">Rating</td>
-      </tr>
-      <tr>
-        <td class="left">Visitor Name</td>
-        <td class="center">Visitor Comment</td>
-        <td class="right">Rating</td>
-      </tr>
-      <tr>
-        <td class="left">Visitor Name</td>
-        <td class="center">Visitor Comment</td>
-        <td class="right">Rating</td>
-      </tr>
-    </table>
+        <thead>
+          <tr>
+            <th class="left">Visitor Name</th>
+            <th class="center">Visitor Comment</th>
+            <th class="right">Rating</th>
+          </tr>
+        </thead>
+        <tbody id="commentsTableBody"></tbody>
+      </table>
+    </tbody>
   </body>
 </html>
