@@ -56,8 +56,3 @@ app
   .on("error", (err) => {
     console.error("Error starting server:", err);
   });
-
-// app.get("/comments", async function (request, response) {
-//   const comments = await db.query("SELECT * FROM comments");
-//   await response.json(comments.rows);
-// });
